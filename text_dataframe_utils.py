@@ -8,6 +8,7 @@ from ntpath import join
 import pandas as pd
 import glob
 import os
+import datetime
 
 
 def multiple_csv_to_single_dataframe(folder):
@@ -23,3 +24,4 @@ def multiple_csv_to_single_dataframe(folder):
 if __name__ == "__main__":
     df = multiple_csv_to_single_dataframe(
         r"C:\Users\Benjamin\Documents\GitHub\Novel-Lesbian-Category-Finder")
+    df.to_csv(f"all_lesbian_tweets_{datetime.date.today()}.csv")
