@@ -20,7 +20,7 @@ def yesterday():
 string = f"{search_term} {negative_terms} since:{yesterday()}"
 
 for i, tweet in enumerate(sntwitter.TwitterSearchScraper('lesbian since').get_items()):
-    if i > 100:
+    if i > 500:
         break
     tweets_list2.append(
         [tweet.date, tweet.id, tweet.content, tweet.user.username])
@@ -29,4 +29,4 @@ for i, tweet in enumerate(sntwitter.TwitterSearchScraper('lesbian since').get_it
 tweets_df2 = pd.DataFrame(tweets_list2, columns=[
                           'Datetime', 'Tweet Id', 'Text', 'Username'])
 
-tweets_df2.to_csv("lesbiantweets.csv")
+tweets_df2.to_csv(f"{date.today()}.csv")
