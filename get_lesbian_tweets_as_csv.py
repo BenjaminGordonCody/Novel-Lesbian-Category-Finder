@@ -6,7 +6,7 @@ from datetime import date, timedelta
 tweets_list2 = []
 
 # Using TwitterSearchScraper to scrape data and append tweets to list
-search_term = "lesbian"
+search_term = '"lesbian"'
 negative_terms = "-xxx -porn -erotic"
 
 
@@ -20,7 +20,7 @@ def yesterday():
 string = f"{search_term} {negative_terms} since:{yesterday()}"
 
 for i, tweet in enumerate(sntwitter.TwitterSearchScraper('lesbian since').get_items()):
-    if i > 500:
+    if i > 1000:
         break
     tweets_list2.append(
         [tweet.date, tweet.id, tweet.content, tweet.user.username])
