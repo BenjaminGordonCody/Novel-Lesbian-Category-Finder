@@ -1,3 +1,7 @@
+"""This func retrieves 1000 tweets containing the word "lesbian" that have been 
+made since yesterday"""
+
+# imports
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 from datetime import date, timedelta
@@ -5,8 +9,8 @@ from datetime import date, timedelta
 # # Creating list to append tweet data to
 tweets_list2 = []
 
-# Using TwitterSearchScraper to scrape data and append tweets to list
-search_term = '"lesbian"'
+# define terms of search
+search_term = "lesbian"
 negative_terms = "-xxx -porn -erotic"
 
 
@@ -17,9 +21,9 @@ def yesterday():
     return yesterday
 
 
-string = f"{search_term} {negative_terms} since:{yesterday()}"
+string = f'+"{search_term}" {negative_terms} since:{yesterday()} -RT'
 
-for i, tweet in enumerate(sntwitter.TwitterSearchScraper('lesbian since').get_items()):
+for i, tweet in enumerate(sntwitter.TwitterSearchScraper(string).get_items()):
     if i > 1000:
         break
     tweets_list2.append(
