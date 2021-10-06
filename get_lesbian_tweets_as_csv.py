@@ -25,7 +25,7 @@ def yesterday():
 string = f'+"{search_term}" {negative_terms} since:{yesterday()} -RT'
 
 for i, tweet in enumerate(sntwitter.TwitterSearchScraper(string).get_items()):
-    if i > 3:
+    if i > 1000:
         break
     tweets_list2.append(
         [tweet.date, tweet.id, tweet.content, tweet.user.username])
