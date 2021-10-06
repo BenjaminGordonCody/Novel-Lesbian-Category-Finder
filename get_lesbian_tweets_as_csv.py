@@ -5,6 +5,7 @@ made since yesterday"""
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 from datetime import date, timedelta
+from time import localtime
 
 # # Creating list to append tweet data to
 tweets_list2 = []
@@ -24,7 +25,7 @@ def yesterday():
 string = f'+"{search_term}" {negative_terms} since:{yesterday()} -RT'
 
 for i, tweet in enumerate(sntwitter.TwitterSearchScraper(string).get_items()):
-    if i > 1000:
+    if i > 3:
         break
     tweets_list2.append(
         [tweet.date, tweet.id, tweet.content, tweet.user.username])
@@ -33,4 +34,4 @@ for i, tweet in enumerate(sntwitter.TwitterSearchScraper(string).get_items()):
 tweets_df2 = pd.DataFrame(tweets_list2, columns=[
                           'Datetime', 'Tweet Id', 'Text', 'Username'])
 
-tweets_df2.to_csv(f"{date.today()}.csv")
+tweets_df2.to_csv(f"{date.today()}_{localtime().tm_hour}.csv")
