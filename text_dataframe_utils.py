@@ -21,6 +21,17 @@ def multiple_csv_to_single_dataframe(folder):
     return df
 
 
+def index_of_search_term_in_string(string):
+    """returns what it says if term is present, otherwise returns None"""
+    pass
+
+
+def count_word_occurences_around_search_term(df):
+    """returns df. col 1 is every word that has buttressed the search term, 
+    col 2 is how many times it has appeared"""
+    pass
+
+
 if __name__ == "__main__":
     df = multiple_csv_to_single_dataframe(
         r"C:\Users\Benjamin\Documents\GitHub\Novel-Lesbian-Category-Finder")
