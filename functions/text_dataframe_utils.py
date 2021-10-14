@@ -5,10 +5,12 @@ strings
 
 # imports
 from ntpath import join
+import string as str_constants
+import datetime
+
 import pandas as pd
 import glob
 import os
-import datetime
 
 
 def multiple_csv_to_single_dataframe(folder):
@@ -19,6 +21,12 @@ def multiple_csv_to_single_dataframe(folder):
     globfiles = glob.glob(joined_files)
     df = pd.concat(map(pd.read_csv, globfiles), ignore_index=True)
     return df
+
+
+def remove_punctuation(string):
+    for character in str_constants.punctuation:
+        string = string.replace(character, '')
+    return string
 
 
 def index_of_search_term_in_string(string):
